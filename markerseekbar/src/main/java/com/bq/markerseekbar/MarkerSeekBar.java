@@ -42,7 +42,7 @@ import android.widget.TextView;
  * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_showMarkerOnTouch}.
  * Automatic toggle. Default true.</li>
  * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_smoothTracking}.
- * Animate popup position. Default true.</li>
+ * Animate popup position. Default false.</li>
  * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextAppearance}.
  * The style of the text inside the marker.</li>
  * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextColor}.
@@ -147,7 +147,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MarkerSeekBar);
 
         showMarkerOnTouch = a.getBoolean(R.styleable.MarkerSeekBar_showMarkerOnTouch, true);
-        smoothTracking = a.getBoolean(R.styleable.MarkerSeekBar_smoothTracking, true);
+        smoothTracking = a.getBoolean(R.styleable.MarkerSeekBar_smoothTracking, false);
 
         popupWindowSize = a.getDimensionPixelSize(R.styleable.MarkerSeekBar_markerPopUpWindowSize, (int) (80 * density));
         markerView.onSizeChanged(popupWindowSize, popupWindowSize, 0, 0);
