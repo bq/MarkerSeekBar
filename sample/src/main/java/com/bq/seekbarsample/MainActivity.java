@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         MarkerSeekBar bar1 = (MarkerSeekBar) findViewById(R.id.bar1);
         assert bar1 != null;
-        bar1.setProgressToTextTransformer(new MarkerSeekBar.ProgressToTextTransformer() {
+        bar1.setProgressAdapter(new MarkerSeekBar.ProgressAdapter() {
             @SuppressLint("DefaultLocale")
             @Override
             public String toText(int progress) {

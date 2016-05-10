@@ -35,7 +35,7 @@ import android.widget.TextView;
  * in your xml to <code>com.bq.markerseekbar.MarkerSeekBar</code>
  * and everything should work as expected.
  * <p/>
- * You can show custom text using {@link ProgressToTextTransformer} and modify colors and other marker
+ * You can show custom text using {@link ProgressAdapter} and modify colors and other marker
  * properties in {@link MarkerView}.
  * <ul>
  * <p/>
@@ -87,7 +87,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
     private int popUpX = Integer.MIN_VALUE;
     private int popUpY = Integer.MIN_VALUE;
 
-    private ProgressToTextTransformer progressToTextTransformer = new ProgressToTextTransformer.Default();
+    private ProgressAdapter progressAdapter = new ProgressAdapter.Default();
 
     public MarkerSeekBar(Context context) {
         this(context, null);
@@ -158,7 +158,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        markerTextView.setText(progressToTextTransformer.toText(progress));
+        markerTextView.setText(progressAdapter.toText(progress));
         updatePopupLayout();
     }
 
@@ -245,7 +245,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
 
     /**
      * Since marker size is fixed call this method to ensure the text fits.
-     * You don't need to call this method, use {@link #setProgressToTextTransformer(ProgressToTextTransformer)} instead.
+     * You don't need to call this method, use {@link #setProgressAdapter(ProgressAdapter)} instead.
      */
     public void ensureMarkerSize(String text) {
         if (markerTextView == null || isInEditMode()) return;
@@ -310,17 +310,17 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
         int oldMax = getMax();
         super.setMax(max);
 
-        if(oldMax == max) return; //Nothing to do
+        if (oldMax == max) return; //Nothing to do
 
         if (markerTextView == null) { //Called during SeekBar constructor
             post(new Runnable() {
                 @Override
                 public void run() {
-                    ensureMarkerSize(progressToTextTransformer.onMeasureLongestText(max));
+                    ensureMarkerSize(progressAdapter.onMeasureLongestText(max));
                 }
             });
         } else {
-            ensureMarkerSize(progressToTextTransformer.onMeasureLongestText(max));
+            ensureMarkerSize(progressAdapter.onMeasureLongestText(max));
         }
     }
 
@@ -344,8 +344,8 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
         popUpRootView.invalidate();
     }
 
-    public void setProgressToTextTransformer(@NonNull ProgressToTextTransformer progressToTextTransformer) {
-        this.progressToTextTransformer = progressToTextTransformer;
+    public void setProgressAdapter(@NonNull ProgressAdapter progressAdapter) {
+        this.progressAdapter = progressAdapter;
     }
 
     public void setShowMarkerOnTouch(boolean showMarkerOnTouch) {
@@ -407,12 +407,12 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
         return outValue.data;
     }
 
-    public interface ProgressToTextTransformer {
+    public interface ProgressAdapter /* My name is OptimusSeekBar */ {
         String toText(int progress);
 
         String onMeasureLongestText(int seekBarMax);
 
-        final class Default implements ProgressToTextTransformer {
+        class Default implements ProgressAdapter {
 
             @Override
             public String toText(int progress) {
