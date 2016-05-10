@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MarkerSeekBar by bq</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>MarkerSeekBar</h1>
+        <p>Custom Android SeekBar that adds a marker / thumb to display current value.</p>
+
+        <p class="view"><a href="https://github.com/bq/MarkerSeekBar">View the Project on GitHub <small>bq/MarkerSeekBar</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/bq/MarkerSeekBar/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bq/MarkerSeekBar/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bq/MarkerSeekBar">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="markerseekbar" class="anchor" href="#markerseekbar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MarkerSeekBar</h1>
+
+<p>Custom Android SeekBar that adds a marker / thumb to display current value. Works on Android 4.4+</p>
+
+<p><img src="https://github.com/bq/MarkerSeekBar/raw/master/output.gif" width="350"></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Just include it in your xml as a replacement of your regular SeekBar. 
+MarkerSeekBar is a direct subclass of AppCompatSeekBar, so you don't need to modify your existing code.</p>
+
+<div class="highlight highlight-text-xml"><pre>    &lt;<span class="pl-ent">com</span>.bq.markerseekbar.MarkerSeekBar
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_marginBottom</span>=<span class="pl-s"><span class="pl-pds">"</span>100dp<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">max</span>=<span class="pl-s"><span class="pl-pds">"</span>100<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">markerColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/colorPrimary<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">markerTextAppearance</span>=<span class="pl-s"><span class="pl-pds">"</span>@style/MarkerCustomTextStyle<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">markerTextColor</span>=<span class="pl-s"><span class="pl-pds">"</span>#ffffff<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<p>The complete attribute list:</p>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>showMarkerOnTouch</code></td>
+<td>Automatic toggle. Default true.</td>
+</tr>
+<tr>
+<td><code>smoothTracking</code></td>
+<td>Animate popup position. Default false.</td>
+</tr>
+<tr>
+<td><code>markerTextAppearance</code></td>
+<td>The style of the text inside the marker.</td>
+</tr>
+<tr>
+<td><code>markerTextColor</code></td>
+<td>The color of the text inside the marker.</td>
+</tr>
+<tr>
+<td><code>markerColor</code></td>
+<td>The marker background color. Default accent color</td>
+</tr>
+<tr>
+<td><code>markerShadowRadius</code></td>
+<td>The marker shadow radius. Use 0 to disable shadows. It affects marker size. Default 4dp.</td>
+</tr>
+<tr>
+<td><code>markerShadowColor</code></td>
+<td>The marker shadow color. Default #331d1d1d.</td>
+</tr>
+<tr>
+<td><code>markerPopUpWindowSize</code></td>
+<td>The popup size, its constant and measured to fit the longest possible text. Default 80dp.</td>
+</tr>
+<tr>
+<td><code>markerHorizontalOffset</code></td>
+<td>Horizontal offset to align the marker tip and the progress thumb. Default (empirical) -8.5dp.</td>
+</tr>
+<tr>
+<td><code>markerVerticalOffset</code></td>
+<td>Vertical offset to align the marker tip and the progress thumb. Default (empirical) -6dp.</td>
+</tr>
+</tbody>
+</table>
+
+<p>If you want to customize another property open a PR or leave a comment!</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+
+<p>Soon™</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>This project is licensed under the Apache Software License, Version 2.0.</p>
+
+<pre><code>Copyright (c) 2016 bq
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bq">bq</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
