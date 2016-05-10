@@ -14,6 +14,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+/**
+ * The marker view itself. This view is basically a background for {@link MarkerSeekBar} pop up.
+ */
 public final class MarkerView extends View {
 
     private static final float SQRT_2 = 1.4142135f;
@@ -113,7 +116,7 @@ public final class MarkerView extends View {
         rad = (0.5f * SQRT_2 * halfSide) - padding;
 
         computeConvexPath(markerPath, rad);
-        rebuildShadowBitmap();
+        invalidateShadowBitmap();
     }
 
     /**
@@ -122,7 +125,7 @@ public final class MarkerView extends View {
      */
     public void setShadowColor(int shadowColor) {
         this.shadowColor = shadowColor;
-        rebuildShadowBitmap();
+        invalidateShadowBitmap();
     }
 
     /** Update the marker shadow. The draw cache will be rebuilt. */
@@ -165,8 +168,7 @@ public final class MarkerView extends View {
         return rad;
     }
 
-
-    private void rebuildShadowBitmap() {
+    private void invalidateShadowBitmap() {
         if (shadowBitmap != null) {
             shadowBitmap.recycle();
         }

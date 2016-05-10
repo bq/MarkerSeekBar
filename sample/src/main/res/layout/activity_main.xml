@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
-    tools:context="com.bq.thumbseekbar.MainActivity">
+    tools:context="com.bq.seekbarsample.MainActivity">
 
     <com.bq.markerseekbar.MarkerSeekBar
         android:id="@+id/bar1"
