@@ -39,26 +39,16 @@ import android.widget.TextView;
  * properties in {@link MarkerView}.
  * <ul>
  * <p/>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_showMarkerOnTouch}.
- * Automatic toggle. Default true.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_smoothTracking}.
- * Animate popup position. Default false.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextAppearance}.
- * The style of the text inside the marker.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextColor}.
- * The color of the text inside the marker.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerColor}.
- * The marker background color. Default accent color</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerShadowRadius}.
- * The marker shadow radius. Use 0 to disable shadows. It affects marker size. Default 4dp.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerShadowColor}.
- * The marker shadow color. Default #331d1d1d.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerPopUpWindowSize}.
- * The popup size, its constant and measured to fit the longest possible text. Default 80dp.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerHorizontalOffset}.
- * Horizontal offset to align the marker tip and the progress thumb. Default empirical -8.5dp.</li>
- * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerVerticalOffset}.
- * Vertical offset to align the marker tip and the progress thumb. Default empirical -6dp.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_showMarkerOnTouch}. * Automatic toggle. Default true.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_smoothTracking}. * Animate popup position. Default false.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextAppearance}. * The style of the text inside the marker.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerTextColor}. * The color of the text inside the marker.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerColor}. * The marker background color. Default accent color</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerShadowRadius}. * The marker shadow radius. Use 0 to disable shadows. It affects marker size. Default 4dp.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerShadowColor}. * The marker shadow color. Default #331d1d1d.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerPopUpWindowSize}. * The popup size, its constant and measured to fit the longest possible text. Default 80dp.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerHorizontalOffset}. * Horizontal offset to align the marker tip and the progress thumb. Default empirical -8.5dp.</li>
+ * <li>attr {@link com.bq.markerseekbar.R.styleable#MarkerSeekBar_markerVerticalOffset}. * Vertical offset to align the marker tip and the progress thumb. Default empirical -6dp.</li>
  * </ul>
  *
  * @see MarkerView
@@ -104,12 +94,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
     }
 
     public MarkerSeekBar(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.seekBarStyle);
-    }
-
-    @SuppressWarnings("deprecation")
-    public MarkerSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs);
 
         setOnSeekBarChangeListener(null);
 
@@ -203,8 +188,11 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
         int oldX = popUpX;
         int oldY = popUpY;
 
-        popUpX = windowLocation[0] + getThumb().getBounds().centerX() + getPaddingLeft() + popupHorizontalOffset - popupWindowSize / 2;
-        popUpY = windowLocation[1] + getThumb().getIntrinsicHeight() / 2 + popupVerticalOffset - popupWindowSize;
+        int thumbCenterX = getThumb() == null ? 0 : getThumb().getBounds().centerX();
+        int thumbHeight = getThumb() == null ? 0 : getThumb().getIntrinsicHeight();
+
+        popUpX = windowLocation[0] + thumbCenterX + getPaddingLeft() + popupHorizontalOffset - popupWindowSize / 2;
+        popUpY = windowLocation[1] + thumbHeight / 2 + popupVerticalOffset - popupWindowSize;
 
         final int dx = oldX - popUpX;
         final int dy = oldY - popUpY;
