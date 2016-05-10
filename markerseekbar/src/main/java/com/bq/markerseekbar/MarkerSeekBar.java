@@ -248,7 +248,7 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
      * You don't need to call this method, use {@link #setProgressToTextTransformer(ProgressToTextTransformer)} instead.
      */
     public void ensureMarkerSize(String text) {
-        if (markerTextView == null) return;
+        if (markerTextView == null || isInEditMode()) return;
         Paint p = markerTextView.getPaint();
         int textSize = (int) p.measureText(text);
         if (textSize > 2 * markerView.getCircleRad()) {
@@ -307,8 +307,10 @@ public class MarkerSeekBar extends AppCompatSeekBar implements SeekBar.OnSeekBar
 
     @Override
     public synchronized void setMax(final int max) {
+        int oldMax = getMax();
         super.setMax(max);
-        if (isInEditMode()) return;
+
+        if(oldMax == max) return; //Nothing to do
 
         if (markerTextView == null) { //Called during SeekBar constructor
             post(new Runnable() {
