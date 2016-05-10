@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -37,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         final MarkerSeekBar bar2 = (MarkerSeekBar) findViewById(R.id.bar2);
         assert bar2 != null;
-        ValueAnimator colorAnim = ValueAnimator.ofObject(new ArgbEvaluator(), Color.RED, Color.BLUE);
+        ValueAnimator colorAnim = ValueAnimator.ofObject(new ArgbEvaluator(),
+                ContextCompat.getColor(this, R.color.colorAccent),
+                Color.WHITE - ContextCompat.getColor(this, R.color.colorAccent)
+        );
         colorAnim.setRepeatCount(ValueAnimator.INFINITE);
         colorAnim.setRepeatMode(ValueAnimator.REVERSE);
         colorAnim.setInterpolator(new LinearInterpolator());

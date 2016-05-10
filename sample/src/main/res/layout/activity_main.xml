@@ -11,30 +11,51 @@
     android:paddingStart="16dp"
     tools:context="com.bq.seekbarsample.MainActivity">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Custom text" />
+
     <com.bq.markerseekbar.MarkerSeekBar
         android:id="@+id/bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:max="9999"
         app:markerColor="#ffffff"
         app:markerTextColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Custom color animations" />
 
     <com.bq.markerseekbar.MarkerSeekBar
         android:id="@+id/bar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:max="9999"
         app:markerPopUpWindowSize="112dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Animations over standard SeekBar" />
 
     <com.bq.markerseekbar.MarkerSeekBar
         android:id="@+id/bar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
         android:max="100"
         app:markerColor="@color/colorPrimary"
         app:markerTextAppearance="@style/MarkerCustomTextStyle"
         app:markerTextColor="#ffffff" />
+
 </LinearLayout>
