@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    tools:context="com.bq.thumbseekbar.MainActivity">
+
+    <com.bq.markerseekbar.MarkerSeekBar
+        android:id="@+id/bar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:max="9999"
+        app:markerColor="#ffffff"
+        app:markerTextColor="#000000" />
+
+    <com.bq.markerseekbar.MarkerSeekBar
+        android:id="@+id/bar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:max="9999"
+        app:markerPopUpWindowSize="112dp" />
+
+    <com.bq.markerseekbar.MarkerSeekBar
+        android:id="@+id/bar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:max="100"
+        app:markerColor="@color/colorPrimary"
+        app:markerTextAppearance="@style/MarkerCustomTextStyle"
+        app:markerTextColor="#ffffff" />
+</LinearLayout>
