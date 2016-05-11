@@ -159,9 +159,9 @@ public final class MarkerView extends View {
 
     /** The visual center of the tear */
     public int getCircleCenterY() {
-        //The view is top aligned, so rad + padding gives the center
-        //of the oval
-        return (int) (height / 2 + padding);
+        //The view is bottom aligned, so the visual center is the center of the
+        //rotated square with side = rad
+        return (int) (height - rad * SQRT_2 - padding);
     }
 
     public float getCircleRad() {
