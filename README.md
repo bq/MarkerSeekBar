@@ -39,7 +39,20 @@ If you want to customize another property open a PR or leave a comment!
 Download
 --------
 
-Soon™
+Add [jitpack.io](https://jitpack.io/) to your repositories:
+```groovy
+allprojects {
+    repositories { 
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+Include the dependency:
+```groovy
+compile "com.github.bq:markerseekbar:v0.9"
+```
+Enjoy!
 
 License
 -------
